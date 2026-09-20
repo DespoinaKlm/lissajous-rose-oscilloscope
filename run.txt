@@ -1,0 +1,8 @@
+#!/bin/bash
+JSYN=$(find lib -name "*.jar" | head -1)
+[ -z "$JSYN" ] && echo "no jsyn jar found in lib/" && exit 1
+java -cp "out:$JSYN" OscilloscopeApp
+
+# windows
+#
+#   java -cp "out;lib\jsyn.jar" OscilloscopeApp

@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+JSYN=$(find lib -name "*.jar" | head -1)
+[ -z "$JSYN" ] && echo "no jsyn jar found in lib/" && exit 1
+mkdir -p out
+javac -cp "$JSYN" -sourcepath src -d out \
+    src/SynthEngine.java \
+    src/LissajousSynth.java \
+    src/RoseSynth.java \
+    src/LissajousPanel.java \
+    src/RosePanel.java \
+    src/OscilloscopeApp.java
+echo "build ok"
+
+# windows (cmd) 
+#   mkdir out
+#   javac -cp lib\jsyn.jar -sourcepath src -d out src\SynthEngine.java src\LissajousSynth.java src\RoseSynth.java src\LissajousPanel.java src\RosePanel.java src\OscilloscopeApp.java
